@@ -1,18 +1,28 @@
 import AuthInput from '@/components/auth/AuthInput'
-import { GoogleIcon } from '@/components/icons'
+import { GoogleIcon, WarningIcon } from '@/components/icons'
 import { useState } from 'react'
 
 export default function Authentication() {
   const [mode, setMode] = useState<'login' | 'signup'>('login')
+  const [error, setError] = useState<string | null>(null)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   function submit() {
     if (mode === 'login') {
       console.log('login')
+      showError('Ocorreu um erro no login')
     } else {
       console.log('cadastrar')
+      showError('Ocorreu um erro no cadastro')
     }
+  }
+
+  function showError(msg: string, time: number = 3) {
+    setError(msg)
+    setTimeout(() => {
+      setError(null)
+    }, time * 1000)
   }
 
   return (
@@ -31,6 +41,14 @@ export default function Authentication() {
             ? 'Entre com sua conta'
             : 'Cadastre-se na plataforma'}
         </h1>
+
+        {!!error && (
+          <div className="flex items-center bg-red-400 text-white py-3 px-5 my-2 border border-red-600 rounded-lg">
+            {WarningIcon()}
+            <span className="ml-3">{error}</span>
+          </div>
+        )}
+
         <AuthInput
           label="E-mail"
           type="email"
