@@ -4,7 +4,7 @@ import SideNavItem from './SideNavItem'
 
 export default function SideNav() {
   return (
-    <aside className="flex flex-col">
+    <aside className="flex flex-col dark:bg-gray-900">
       <div className="flex flex-col items-center justify-center bg-gradient-to-r from-indigo-500 to-purple-800 h-20 ">
         <Logo />
       </div>
@@ -29,7 +29,7 @@ export default function SideNav() {
           text="Sair"
           icon={LogoutIcon}
           key="logout"
-          className="text-red-600 hover:bg-red-400 hover:text-white"
+          className="text-red-600 dark:text-red-400 hover:bg-red-400 hover:text-white dark:hover:text-white"
         />
       </ul>
     </aside>

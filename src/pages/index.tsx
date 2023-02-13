@@ -1,11 +1,11 @@
-import Layout from "@/components/template/Layout";
+import Layout from '@/components/template/Layout'
 
 export default function Home() {
   return (
     <>
       <Layout title="Página Inicial" subtitle="Dashboard Admin">
-        <h1 className="bg-gradient-to-r from-green-500 to-blue-500">Admin</h1>
+        <h1>Conteúdo Admin</h1>
       </Layout>
     </>
-  );
+  )
 }
