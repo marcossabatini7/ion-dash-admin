@@ -1,21 +1,28 @@
 import Link from 'next/link'
 
 interface SideNavItemProps {
-  url: string
   text: string
   icon: any
+  url?: string
+  className?: string
+  onClick?: (e: React.MouseEvent) => void
 }
 
 export default function SideNavItem(props: SideNavItemProps) {
-  return (
-    <li className="hover:bg-gray-100">
-      <Link
-        href={props.url}
-        className="flex flex-col justify-center items-center h-20 w-full p-2"
+  function renderLink() {
+    return (
+      <div
+        className={`flex flex-col justify-center items-center h-20 w-full p-2  text-gray-600 ${props?.className}`}
       >
         {props.icon}
-        <span className="text-sm font-light text-gray-600">{props.text}</span>
-      </Link>
+        <span className="text-sm font-light">{props.text}</span>
+      </div>
+    )
+  }
+
+  return (
+    <li onClick={props.onClick} className="hover:bg-gray-100 cursor-pointer">
+      {props?.url ? <Link href={props.url}>{renderLink()}</Link> : renderLink()}
     </li>
   )
 }
