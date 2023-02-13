@@ -4,7 +4,7 @@ export type Theme = 'dark' | ''
 const DEFAULT_THEME: Theme = 'dark'
 
 interface AppContextProps {
-  theme: Theme
+  theme?: Theme
   changeTheme?: () => void
   children?: ReactNode
 }
