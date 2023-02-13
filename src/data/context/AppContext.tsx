@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useState } from 'react'
 
-type Theme = 'dark' | ''
+export type Theme = 'dark' | ''
 const DEFAULT_THEME: Theme = 'dark'
 
 interface AppContextProps {
