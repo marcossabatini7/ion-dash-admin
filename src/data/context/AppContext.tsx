@@ -1,21 +1,33 @@
-import { createContext, ReactNode } from 'react'
+import { createContext, ReactNode, useState } from 'react'
 
-interface AppProviderProps {
-  children: ReactNode
+type Theme = 'dark' | ''
+const DEFAULT_THEME: Theme = 'dark'
+
+interface AppContextProps {
+  theme: Theme
+  changeTheme?: () => void
+  children?: ReactNode
 }
 
-const AppContext = createContext({
-  name: ''
+const AppContext = createContext<AppContextProps>({
+  theme: DEFAULT_THEME
 })
 
-export function AppProvider(props: AppProviderProps) {
+export function AppProvider(props: AppContextProps) {
+  const [theme, setTheme] = useState<Theme>(DEFAULT_THEME)
+
+  function changeTheme() {
+    setTheme((old) => (old === '' ? 'dark' : ''))
+  }
+
   return (
     <AppContext.Provider
       value={{
-        name: 'Test context API'
+        theme,
+        changeTheme
       }}
     >
-      {props.children}
+      {props?.children}
     </AppContext.Provider>
   )
 }
